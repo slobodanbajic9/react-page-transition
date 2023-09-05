@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion';
 
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -14,11 +15,13 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes location={location} key={location.pathname}>
-        <Route index element={ <Home /> }/>
-        <Route path="/about" element={ <About /> }/>
-        <Route path="/contact" element={ <Contact /> }/>
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route index element={ <Home /> }/>
+          <Route path="/about" element={ <About /> }/>
+          <Route path="/contact" element={ <Contact /> }/>
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }
